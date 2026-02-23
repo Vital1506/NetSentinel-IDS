@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <!-- Header -->
+    <div class="dashboard-header">
+        <h2>Security Intelligence Dashboard</h2>
+        <a href="/" class="scan-btn">+ New Scan</a>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-grid">
+        <div class="stat-card total">
+            <h3>Total Scans</h3>
+            <p class="counter" data-target="{{ stats.total }}">0</p>
+        </div>
+
+        <div class="stat-card high">
+            <h3>High Risk</h3>
+            <p class="counter" data-target="{{ stats.high }}">0</p>
+        </div>
+
+        <div class="stat-card medium">
+            <h3>Medium Risk</h3>
+            <p class="counter" data-target="{{ stats.medium }}">0</p>
+        </div>
+
+        <div class="stat-card low">
+            <h3>Low Risk</h3>
+            <p class="counter" data-target="{{ stats.low }}">0</p>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-section">
+        <div class="chart-card">
+            <h4>Risk Distribution</h4>
+            <canvas id="riskChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h4>Weekly Scan Trend</h4>
+            <canvas id="trendChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="activity-section">
+        <h3>Live Scan Activity</h3>
+
+        <div class="activity-feed">
+            {% for scan in scans %}
+            <div class="activity-item {{ scan.threat_level|lower }}">
+                <div class="activity-url">{{ scan.url }}</div>
+                <div class="activity-risk">{{ scan.risk_score }}%</div>
+                <div class="activity-time">
+                    {{ scan.timestamp.strftime('%Y-%m-%d %H:%M') }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const statsData = {
+        high: {{ stats.high }},
+        medium: {{ stats.medium }},
+        low: {{ stats.low }}
+    };
+</script>
+
+{% endblock %}

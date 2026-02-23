@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Analyze URL Security</h2>
+
+    <div id="error-message" class="error hidden"></div>
+
+    <form id="scan-form">
+        <input type="text" id="url-input" placeholder="Enter https://example.com" required>
+        <button type="submit">Scan Now</button>
+    </form>
+
+    <div id="loader" class="loader hidden"></div>
+</div>
+
+<div id="result-container" class="card result-card hidden">
+    <h2>Scan Result</h2>
+
+    <div class="url-display">
+        <strong>URL:</strong> <span id="result-url"></span>
+    </div>
+
+    <div id="threat-badge" class="threat-level"></div>
+
+    <div class="progress-container">
+        <div id="risk-bar" class="progress-bar">0%</div>
+    </div>
+
+    <div id="risk-details" class="risk-details"></div>
+
+    <button onclick="resetScan()" class="btn-back">Scan Another URL</button>
+</div>
+{% endblock %}

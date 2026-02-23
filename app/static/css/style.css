@@ -1,0 +1,297 @@
+/* =========================================
+   NETSENTINEL IDS - SOC ENTERPRISE STYLES
+========================================= */
+
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --card-bg: rgba(255,255,255,0.05);
+    --accent: #38bdf8;
+    --danger: #ef4444;
+    --warning: #facc15;
+    --safe: #22c55e;
+    --text-light: #ffffff;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    padding: 20px 40px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* =========================================
+   CARD SYSTEM
+========================================= */
+
+.card, .stat-card, .chart-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease;
+}
+
+.card:hover,
+.stat-card:hover,
+.chart-card:hover {
+    transform: translateY(-4px);
+}
+
+/* =========================================
+   INPUT & BUTTON
+========================================= */
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+/* =========================================
+   THREAT LEVEL COLORS
+========================================= */
+
+.threat-level {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.threat-level.low { color: var(--safe); }
+.threat-level.medium { color: var(--warning); }
+.threat-level.high { color: var(--danger); }
+
+/* =========================================
+   RISK BAR
+========================================= */
+
+.progress-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 25px;
+    background: linear-gradient(90deg, var(--safe), var(--danger));
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+    transition: width 0.6s ease;
+}
+
+/* =========================================
+   DASHBOARD GRID
+========================================= */
+
+.dashboard-wrapper {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.stats-grid,
+.charts-section {
+    display: grid;
+    gap: 20px;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin: 30px 0;
+}
+
+.charts-section {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    margin: 30px 0;
+}
+
+/* =========================================
+   ALERT FEED
+========================================= */
+
+.live-feed {
+    margin-top: 15px;
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.live-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-left: 5px solid var(--accent);
+    font-size: 13px;
+}
+
+.live-item.high {
+    border-left-color: var(--danger);
+    animation: alertPulse 1.2s infinite alternate;
+}
+
+.live-item.medium {
+    border-left-color: var(--warning);
+}
+
+.live-item.low {
+    border-left-color: var(--safe);
+}
+
+/* Flashing alert animation */
+@keyframes alertPulse {
+    from { background: rgba(239,68,68,0.1); }
+    to { background: rgba(239,68,68,0.25); }
+}
+
+/* =========================================
+   COUNTER
+========================================= */
+
+.counter {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* =========================================
+   LOADER
+========================================= */
+
+.loader {
+    margin: 20px auto;
+    border: 5px solid rgba(255,255,255,0.1);
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+.light-mode {
+    background: #f4f4f4;
+    color: #111;
+}
+
+/* =========================================
+   BACKGROUND CYBER EFFECT
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.08), transparent);
+    animation: moveBg 12s infinite linear;
+    z-index: -1;
+}
+
+@keyframes moveBg {
+    from { transform: translate(0,0); }
+    to { transform: translate(-50px,-50px); }
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+    color: var(--danger);
+    margin-bottom: 15px;
+}
+
+.hidden {
+    display: none;
+}
+/* ================= ALERT ENGINE ================= */
+
+.alert-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.alert-box {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 3px solid #ef4444;
+    animation: flashBorder 1s infinite alternate;
+}
+
+@keyframes flashBorder {
+    from { box-shadow: 0 0 10px #ef4444; }
+    to { box-shadow: 0 0 25px #ef4444; }
+}
+
+.live-item.critical {
+    border-left-color: #ff0000;
+    animation: alertPulse 1s infinite alternate;
+}
