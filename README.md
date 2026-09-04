@@ -55,91 +55,86 @@ This project simulates an enterprise-grade cybersecurity monitoring system.
 ---
 
 ## 🏗 Project Architecture
+```text
 NetSentinel-IDS/
 │
 ├── run.py
 ├── config.py
 ├── train_model.py
 ├── models/
-│ └── model.pkl
+│   └── model.pkl
 │
 ├── app/
-│ ├── init.py
-│ ├── models.py
-│ │
-│ ├── services/
-│ │ ├── feature_service.py
-│ │ └── model_service.py
-│ │
-│ ├── routes/
-│ │ ├── web_routes.py
-│ │ └── api_routes.py
-│ │
-│ ├── templates/
-│ └── static/
+│   ├── __init__.py
+│   ├── models.py
+│   │
+│   ├── services/
+│   │   ├── feature_service.py
+│   │   └── model_service.py
+│   │
+│   ├── routes/
+│   │   ├── web_routes.py
+│   │   └── api_routes.py
+│   │
+│   ├── templates/
+│   └── static/
+```
 
 ---
 
 ## ⚙️ Installation Guide
 
 ### 1️⃣ Clone Repository
-
----
-
-## ⚙️ Installation Guide
-
-### 1️⃣ Clone Repository
+```bash
 git clone https://github.com/Vital1506/NetSentinel-IDS.git
-
 cd NetSentinel-IDS
+```
 
 ---
 
 ### 2️⃣ Create Virtual Environment
+```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 
 ---
 
 ### 3️⃣ Install Dependencies
 
-If needed:
+Preferred:
+```bash
 pip install -r requirements.txt
+```
 
-If needed:
-
-
-pip install flask flask-sqlalchemy flask-socketio scikit-learn joblib
-
+Alternative:
+```bash
+pip install flask flask-sqlalchemy flask-socketio flask-jwt-extended flask-limiter scikit-learn joblib
+```
 
 ---
 
 ### 4️⃣ Train Machine Learning Model
-
-
+```bash
 python train_model.py
-
+```
 
 This generates:
-
-
+```text
 models/model.pkl
-
+```
 
 ---
 
 ### 5️⃣ Run Application
-
-
+```bash
 python run.py
-
+```
 
 Open in browser:
-
-
+```text
 http://127.0.0.1:5000
-
+```
 
 ---
 
@@ -215,9 +210,52 @@ http://127.0.0.1:5000
 ## 👨‍💻 Author
 
 **Vital Karthikeyan**  
-Cybersecurity  Enthusiast  
+Cybersecurity Enthusiast  
 GitHub: https://github.com/Vital1506
 
+---
 
-Run:
+# 🌱 Biomass-Derived Activated Carbon for Supercapacitors
 
+### Turning agricultural biomass into a functional energy-storage material.
+
+## The Challenge
+
+Can agricultural biomass be transformed into a low-cost material suitable for energy storage?
+
+## The Idea
+
+Instead of treating biomass as waste, I explored its potential as a precursor for porous activated carbon.
+
+**Biomass → Activated Carbon → Electrode → Supercapacitor → Testing**
+
+## What I Did
+
+- Prepared biomass-derived activated carbon
+- Fabricated electrodes on nickel foam
+- Built 2-electrode and 3-electrode configurations
+- Performed CV, GCD and EIS measurements
+- Analysed electrochemical behaviour using Origin and ZSimpWin
+
+## Results
+
+| Configuration | Specific Capacitance |
+|---|---:|
+| 2-electrode | 43.33 F g⁻¹ |
+| 3-electrode | 26.66 F g⁻¹ |
+
+## What I Learned
+
+This project taught me how a material moves from an initial idea through:
+
+**Material → Prototype → Testing → Data → Interpretation**
+
+More importantly, it showed me how sustainable materials research can connect scientific exploration with real-world applications.
+
+## My Role
+
+Research Intern  
+Department of Metallurgical & Materials Engineering  
+IIT Madras
+
+May – July 2025
