@@ -2,6 +2,7 @@ Flask
 numpy
 pandas
 scikit-learn
+joblib
 requests
 beautifulsoup4
 whois
@@ -11,3 +12,5 @@ flask_jwt_extended
 flask_limiter
 flask-socketio
 eventlet
+pytest
+flake8
