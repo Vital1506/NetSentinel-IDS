@@ -1,14 +1,12 @@
-from flask import Blueprint, request, jsonify
-from app import db
+from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token
 
 auth_bp = Blueprint("auth", __name__)
 
-# Temporary demo login (no real user DB yet)
+
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    data = request.get_json()
-
+    data = request.get_json(silent=True) or {}
     username = data.get("username")
     password = data.get("password")
 
