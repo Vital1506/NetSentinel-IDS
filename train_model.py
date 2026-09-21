@@ -1,8 +1,12 @@
+import os
 import random
+
 import joblib
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
 from app.services.feature_service import extract_features
+
 
 safe_urls = [
     "https://google.com",
@@ -22,6 +26,8 @@ phishing_urls = [
     "http://192.168.0.1/verify",
 ]
 
+random.seed(42)
+
 X = []
 y = []
 
@@ -36,14 +42,15 @@ for _ in range(500):
     y.append(1)
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-model = RandomForestClassifier(n_estimators=100)
+model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 accuracy = model.score(X_test, y_test)
 print("Model Accuracy:", accuracy)
 
+os.makedirs("models", exist_ok=True)
 joblib.dump(model, "models/model.pkl")
 print("Model saved to models/model.pkl")
